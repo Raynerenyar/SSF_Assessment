@@ -17,9 +17,17 @@ import org.springframework.context.annotation.Bean;
 @Configuration
 public class RedisConfig {
 
-    // value redis host from application_properties
+    /*
+     * ==================================================
+     * All config values from .env file or railway's .env
+     * application.properties contains:
+     * spring.config.import=optional:file:.env[.properties]
+     * to retrieve values from .env
+     * ==================================================
+     */
     @Value("${REDISHOST}")
     private String redisHost;
+
     // Optional so that there's a default value to fallback to
     // value redis host from application_properties
     @Value("${REDISPORT}")

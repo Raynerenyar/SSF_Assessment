@@ -11,4 +11,8 @@
 .title>h2 {
 	font-size: 2em;
 }
+.error {
+	color: red;
+	font-size: larger;
+}
 
