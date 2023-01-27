@@ -44,11 +44,6 @@ public class PizzaService {
 
     private Integer numChars = 8;
 
-    public void writeToRedis() {
-        redisTemplate.opsForValue().set("hi", "wow");
-        System.out.println(redisTemplate.opsForValue().get("hi"));
-    }
-
     public synchronized String generateId() {
         SecureRandom rand = new SecureRandom();
         StringBuilder sb = new StringBuilder();
@@ -66,11 +61,9 @@ public class PizzaService {
         Integer pizzaCost = priceMap.get(pizza.getPizzaType());
         Integer numOfPizzas = pizza.getNumOfPizzas();
         Double multiplier = Double.valueOf(sizeMultiplierMap.get(pizza.getPizzaSize()));
-        System.out.println("Multi: " + multiplier);
         Double totalCost = (Double) (pizzaCost * numOfPizzas * multiplier);
         // Double totalCost = (Double) Math.floor(((pizzaCost * numOfPizzas *
         // multiplier) * 10) / 10);
-        System.out.println("totalCost: " + totalCost);
         order.setPizzaCost(totalCost);
         return order;
     }
@@ -80,7 +73,6 @@ public class PizzaService {
         // generate cost and bind to order
         order.setId(generateId());
         order = calculateCost(pizza, order);
-        System.out.println("is order rush " + order.getIsRush());
         if (order.getIsRush()) {
             order.setTotalCost(order.getPizzaCost() + 2f);
         } else {
@@ -133,7 +125,6 @@ public class PizzaService {
                 .add("quantity", pizza.getNumOfPizzas())
                 .add("total", order.getTotalCost());
         JsonObject jo = job.build();
-        System.out.println(jo.toString());
         return jo;
     }
 

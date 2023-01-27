@@ -39,11 +39,6 @@ public class PizzaController {
 
     @PostMapping("/pizza")
     public String getOrder(@Valid Pizza pizza, BindingResult result, Order order, Model model, HttpSession session) {
-        System.out.println(pizza.getPizzaSize());
-        System.out.println(pizza.getPizzaType());
-        System.out.println(pizza.getNumOfPizzas());
-        // System.out.println(order.getNumOfPizzas());
-        // System.out.println(order.getName());
         if (result.hasErrors()) {
             return "landing";
         }
@@ -58,50 +53,38 @@ public class PizzaController {
     public String deliveryDetails(@Valid Order order, BindingResult result, Model model,
             HttpSession session) {
         Pizza pizza = (Pizza) session.getAttribute("pizza");
-        System.out.println(order.getAddress());
-        System.out.println(order.getComments());
-        System.out.println("result error: " + result.hasErrors());
-        System.out.println("rush order: " + order.getIsRush());
-        System.out.println("Pizza type: " + pizza.getPizzaType());
-        System.out.println("Pizza size: " + pizza.getPizzaSize());
-        System.out.println("Pizza size: " + pizza.getNumOfPizzas());
 
         if (result.hasErrors()) {
             return "orderDetails";
         }
         order = pizzaService.saveToRedis(pizza, order);
-        // order.setPizzaCost(pizzaCost);
-        // pizzaService.convertToJson(pizza, order);
-        System.out.println(order.getId());
-        System.out.println(order.getPizzaCost());
-        System.out.println("orderCost: " + order.getTotalCost());
-        System.out.println(order.getAddress());
 
         model.addAttribute("order", order);
         return "deliveryDetails";
     }
 
-    @GetMapping(path = "/order/{id}")
-    public String retrieveId(@PathVariable String id, Model model) throws IOException {
-        List<Object> listOfSomething = pizzaService.retrieveFromRedis(id);
-        Order order = (Order) listOfSomething.get(0);
-        Pizza pizza = (Pizza) listOfSomething.get(1);
-        // Map<String, String> sizeMultiplierMap = Map.ofEntries(
-        // entry("orderId", order.getId()),
-        // entry("name", order.getName()),
-        // entry("address", order.getAddress()),
-        // entry("phone", order.getPhone()),
-        // entry("rush", order.getIsRush().toString()),
-        // entry("comments", order.getComments()),
-        // entry("pizza", pizza.getPizzaType()),
-        // entry("pizza", pizza.getPizzaSize()),
-        // entry("quantity", pizza.getNumOfPizzas().toString()),
-        // entry("total", order.getTotalCost().toString()));
+    // @GetMapping(path = "/order/{id}")
+    // public String retrieveId(@PathVariable String id, Model model) throws
+    // IOException {
+    // List<Object> listOfSomething = pizzaService.retrieveFromRedis(id);
+    // Order order = (Order) listOfSomething.get(0);
+    // Pizza pizza = (Pizza) listOfSomething.get(1);
+    // // Map<String, String> sizeMultiplierMap = Map.ofEntries(
+    // // entry("orderId", order.getId()),
+    // // entry("name", order.getName()),
+    // // entry("address", order.getAddress()),
+    // // entry("phone", order.getPhone()),
+    // // entry("rush", order.getIsRush().toString()),
+    // // entry("comments", order.getComments()),
+    // // entry("pizza", pizza.getPizzaType()),
+    // // entry("pizza", pizza.getPizzaSize()),
+    // // entry("quantity", pizza.getNumOfPizzas().toString()),
+    // // entry("total", order.getTotalCost().toString()));
 
-        model.addAttribute("order", order);
-        model.addAttribute("pizza", pizza);
-        return "fullDetails";
-    }
+    // model.addAttribute("order", order);
+    // model.addAttribute("pizza", pizza);
+    // return "fullDetails";
+    // }
 
     @PostMapping(path = "/pizza/order", params = "action=reset")
     public String cancelOrder(HttpSession session) {
