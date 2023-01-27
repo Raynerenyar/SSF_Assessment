@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Full details</h1>
+    <table>
+        <tr>
+            <td>orderId:</td>
+            <td>
+                <span data-th-text="${order.id}"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td>
+                <span data-th-text="${order.name}"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Address:</td>
+            <td>
+                <span data-th-text="${order.address}"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Phone: </td>
+            <td>
+                <span data-th-text="${order.phone}"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Rush: </td>
+            <td data-th-if="${order.getIsRush() == true}">True</td>
+            <td data-th-if="${order.getIsRush() == false}">False</td>
+        </tr>
+        <tr>
+            <td>Pizza:</td>
+            <td>
+                <span data-th-text="${pizza.pizzaType}"></span>
+            </td>
+        </tr>
+        <tr>
+            <!-- <td data-th-text="${pizza.pizzaSize}"></td> -->
+            <td>Size:</td>
+            <td>
+                <span data-th-if="${pizza.getPizzaSize() == 'sm'}">Small</span>
+                <span data-th-if="${pizza.getPizzaSize() == 'md'}">Medium</span>
+                <span data-th-if="${pizza.getPizzaSize() == 'lg'}">Large</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Quantity:</td>
+            <td>
+                <span data-th-text="${pizza.numOfPizzas}"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Total:</td>
+            <td>
+                $<span data-th-text="${order.totalCost}"></span>
+            </td>
+        </tr>
+        
+    </table>
+</body>
+</html>

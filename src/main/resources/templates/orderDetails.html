@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Order Delivery Details</h1>
+    <!-- <div data-th-object="${pizza}">
+        <span data-th-text="*{getPizzaSize()}"></span>
+    </div> -->
+    <form data-th-object="${order}" method="post" data-th-action="@{/pizza/order}">
+        <div>Name: <input type="text" data-th-field="*{name}">
+            <div class="error" data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}">
+            </div>
+        </div>
+        <div>Address: <input type="text" data-th-field="*{address}">
+            <div class="error" data-th-if="${#fields.hasErrors('address')}" data-th-errors="*{address}">
+            </div>
+        </div>
+        <div>Phone: <input type="text" data-th-field="*{phone}">
+            <div class="error" data-th-if="${#fields.hasErrors('phone')}" data-th-errors="*{phone}">
+            </div>
+            <div class="error" data-th-if="${#fields.hasErrors('phoneNumInt')}" data-th-errors="*{phoneNumInt}">
+            </div>
+        </div>
+
+        <div>
+            Rush: <input type="checkbox" data-th-field="*{isRush}">
+        </div>
+        <div>Comments: <input type="text" data-th-field="*{comments}"></div>
+        <button type="submit" name="action" value="submit">Place Order</button>
+        <button type="submit" name="action" value="reset">Cancel Order</button>
+    </form>
+</body>
+</html>
