@@ -1,3 +1,7 @@
+# Main branch uses Redis
+- [For MySQL, check branch MySQL](https://github.com/Raynerenyar/SSF_Assessment/tree/MySQL)
+
+
 # Update to README.md[^1]
 ## Before running server 
 ### add .env file with
