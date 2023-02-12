@@ -23,7 +23,7 @@
 								<img src="/images/Bella.png" class="pizza">
 							</div>
 							<div>
-								<input data-th-field="*{pizzaType}" type="radio" name="pizza" value="bella"> Bella
+								<input data-th-field="*{type}" type="radio" name="pizza" value="bella"> Bella
 							</div>
 						</td>
 						<td>
@@ -31,7 +31,7 @@
 								<img src="/images/Margherita.png" class="pizza">
 							</div>
 							<div>
-								<input data-th-field="*{pizzaType}" type="radio" name="pizza" value="margherita"> Margherita
+								<input data-th-field="*{type}" type="radio" name="pizza" value="margherita"> Margherita
 							</div>
 						</td>
 						<td>
@@ -39,7 +39,7 @@
 								<img src="/images/Marinara.png" class="pizza">
 							</div>
 							<div>
-								<input data-th-field="*{pizzaType}" type="radio" name="pizza" value="marinara"> Marinara
+								<input data-th-field="*{type}" type="radio" name="pizza" value="marinara"> Marinara
 							</div>
 						</td>
 						<td>
@@ -47,7 +47,7 @@
 								<img src="/images/SpianataCalabrese.png" class="pizza">
 							</div>
 							<div>
-								<input data-th-field="*{pizzaType}" type="radio" name="pizza" value="spianatacalabrese"> Spianata Calabrese
+								<input data-th-field="*{type}" type="radio" name="pizza" value="spianatacalabrese"> Spianata Calabrese
 							</div>
 						</td>
 						<td>
@@ -55,10 +55,10 @@
 								<img src="/images/TrioFormaggio.png" class="pizza">
 							</div>
 							<div>
-								<input data-th-field="*{pizzaType}" type="radio" name="pizza" value="trioformaggio"> Trio Formaggio
+								<input data-th-field="*{type}" type="radio" name="pizza" value="trioformaggio"> Trio Formaggio
 							</div>
 						</td>
-						<div class="error" data-th-if="${#fields.hasErrors('pizzaType')}" data-th-errors="*{pizzaType}"></div> 
+						<div class="error" data-th-if="${#fields.hasErrors('type')}" data-th-errors="*{type}"></div> 
 					</tr>
 					<tr>
 						<td>Size:</td>
@@ -74,8 +74,8 @@
 						<td>Quantity:</td>
 						<!-- data-th-object="${pizza}" -->
 						<td>
-							<input type="number" min="1" max = "10" name="quantity" data-th-field="*{numOfPizzas}" value="1">
-							<div class="error" data-th-if="${#fields.hasErrors('numOfPizzas')}" data-th-errors="*{numOfPizzas}"></div> 
+							<input type="number" min="1" max = "10" name="quantity" data-th-field="*{quantity}" value="1">
+							<div class="error" data-th-if="${#fields.hasErrors('quantity')}" data-th-errors="*{quantity}"></div> 
 						</td>
 					</tr>
 					<tr>

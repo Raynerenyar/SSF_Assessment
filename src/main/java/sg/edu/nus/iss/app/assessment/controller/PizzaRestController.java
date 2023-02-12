@@ -29,7 +29,7 @@ public class PizzaRestController {
 
     @GetMapping(path = "/order/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> retrieveId(@PathVariable String id, Model model) throws IOException {
-        List<Object> listOfSomething = pizzaService.retrieveFromRedis(id);
+        List<Object> listOfSomething = pizzaService.retrieveFromMySql(id);
 
         if (listOfSomething != null) {
             Order order = (Order) listOfSomething.get(0);

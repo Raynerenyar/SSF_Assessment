@@ -1,34 +1,30 @@
-# Update to README.md[^1]
-## Before running server 
-### add .env file with
-```
-REDISHOST=<host>
-REDISPORT=<port>
-REDISUSER=<username>
-REDISPASSWORD=<password>
-```
-- .env is not pushed to github
+# The database used for this branch of SSF assessment was changed from Redis to MySQL.
 
 
-# Redis config
-- The below redis config values comes from .env file or railway's .env
-```java
-    @Value("${REDISHOST}")
-    private String redisHost;
+# Before starting application
 
-    @Value("${REDISPORT}")
-    private Integer redisPort;
+## 1. Add.env with the following contents
+- ### For localhost development
+    ```
+    MYSQLUSER=<user>
+    MYSQLPASSWORD=<password>
+    MYSQLDATABASE=
+    MYSQLHOST=
+    MYSQLPORT=
+    MYSQL_URL=jdbc:mysql://localhost/<schema_name>
+    ```
+    <schema_name> = pizza
+- ### For deploying to Railway MySQL and using root user
+    `MYSQLUSER=root` if using root user.
 
-    @Value("${REDISUSER}")
-    private String redisUsername;
+    Spring runs `MySqlConfig.java` and pulls railway's environment variables to connect to railway's MySQL.
 
-    @Value("${REDISPASSWORD}")
-    private String redisPassword;
-```
+- ### For deploying to Railway MySQL and using new user
+    #### share these variables to railway
+    ```
+    MYSQLUSER=<user>
+    MYSQLPASSWORD=<password>
+    ```
 
-
-# In application.properties
-- Add into application.properties to allow spring to get key/value from .env:
-    `spring.config.import=optional:file:.env[.properties]`
-
-[^1]: Code was not modified after 5pm.
+## 2. Create database and tables with:
+[pizza Database](src/main/java/sg/edu/nus/iss/app/assessment/database)

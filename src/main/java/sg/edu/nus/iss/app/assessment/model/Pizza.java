@@ -1,37 +1,39 @@
 package sg.edu.nus.iss.app.assessment.model;
 
-import java.util.List;
-
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
+@Data
 public class Pizza {
 
-    private List<String> listPizzaTypes = List.of("bella", "margherita", "marinara", "spianatacalabrese",
-            "trioformaggio");
-
-    private List<String> listPizzaSizes = List.of("sm", "md", "lg");
-
     @NotEmpty(message = "Please select a pizza")
-    private String pizzaType;
+    private String type;
 
     // drop down defaults to small, no validation required
     private String pizzaSize;
 
     // Min and max validation done on html
     @NotNull(message = "Please input number of pizzas")
-    private Integer numOfPizzas;
+    private Integer quantity;
 
-    public String getPizzaType() {
-        return pizzaType;
+    private Integer price;
+
+    public Integer getPrice() {
+        return price;
     }
 
-    public void setPizzaType(String pizzaType) {
-        if (listPizzaTypes.contains(pizzaType)) {
-            this.pizzaType = pizzaType;
-        }
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getPizzaSize() {
@@ -39,22 +41,15 @@ public class Pizza {
     }
 
     public void setPizzaSize(String pizzaSize) {
-        if (listPizzaSizes.contains(pizzaSize)) {
-            this.pizzaSize = pizzaSize;
-        }
-        // this.pizzaSize = pizzaSize;
+        this.pizzaSize = pizzaSize;
     }
 
-    public List<String> getListPizzaSizes() {
-        return listPizzaSizes;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public Integer getNumOfPizzas() {
-        return numOfPizzas;
-    }
-
-    public void setNumOfPizzas(Integer numOfPizzas) {
-        this.numOfPizzas = numOfPizzas;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
 }

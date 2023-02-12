@@ -11,8 +11,8 @@
         <span data-th-text="*{getPizzaSize()}"></span>
     </div> -->
     <form data-th-object="${order}" method="post" data-th-action="@{/pizza/order}">
-        <div>Name: <input type="text" data-th-field="*{name}">
-            <div class="error" data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}">
+        <div>Name: <input type="text" data-th-field="*{fullName}">
+            <div class="error" data-th-if="${#fields.hasErrors('fullName')}" data-th-errors="*{fullName}">
             </div>
         </div>
         <div>Address: <input type="text" data-th-field="*{address}">
@@ -27,7 +27,7 @@
         </div>
 
         <div>
-            Rush: <input type="checkbox" data-th-field="*{isRush}">
+            Rush: <input type="checkbox" data-th-field="*{rush}">
         </div>
         <div>Comments: <input type="text" data-th-field="*{comments}"></div>
         <button type="submit" name="action" value="submit">Place Order</button>
